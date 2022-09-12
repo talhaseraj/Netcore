@@ -1,0 +1,1 @@
+String apiUrl="https://languages.free.beeceptor.com/";
