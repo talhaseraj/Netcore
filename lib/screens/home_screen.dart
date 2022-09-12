@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: size.height,
                   child: Column(
                     children: [
+                      Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
@@ -55,7 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Divider(),
                       Row(children: [
-                        
+                        Container(padding: EdgeInsets.symmetric(horizontal: size.width*.08,vertical: size.height*.02),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.blueAccent),
+                            borderRadius: Border
+
+                          ),
+                          height: size.height*.1,
+                          width: size.width*.4,
+                          child: Image(image: NetworkImage("https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515358_10512.png")),),
                       ],),
                     ],
                   )),
