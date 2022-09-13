@@ -4,18 +4,18 @@
 
 import 'dart:convert';
 
-List<ApiResponse> apiResponseFromJson(String str) => List<ApiResponse>.from(json.decode(str).map((x) => ApiResponse.fromJson(x)));
+List<ApiResponseModel> apiResponseFromJson(String str) => List<ApiResponseModel>.from(json.decode(str).map((x) => ApiResponseModel.fromJson(x)));
 
-String apiResponseToJson(List<ApiResponse> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String apiResponseToJson(List<ApiResponseModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ApiResponse {
-  ApiResponse({
+class ApiResponseModel {
+  ApiResponseModel({
     this.languages,
   });
 
   List<Language>? languages;
 
-  factory ApiResponse.fromJson(Map<String, dynamic> json) => ApiResponse(
+  factory ApiResponseModel.fromJson(Map<String, dynamic> json) => ApiResponseModel(
     languages: List<Language>.from(json["languages"].map((x) => Language.fromJson(x))),
   );
 
@@ -31,7 +31,7 @@ class Language {
     this.flag,
   });
 
-  String? data;
+  dynamic data;
   String? local;
   String? flag;
 
@@ -46,4 +46,5 @@ class Language {
     "local": local,
     "flag": flag,
   };
+
 }
