@@ -196,7 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                         
+
                           height: size.height * .06,
                           width: size.width * .3,
                           child: MaterialButton(
