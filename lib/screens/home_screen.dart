@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'dart:convert' ;
+import 'dart:convert';
 import 'dart:convert' show utf8;
 
 import '../bloc/language_bloc.dart';
@@ -40,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     return BlocBuilder<LanguageBloc, LanguageState>(
         bloc: LanguageBloc(), // provide the local bloc instance
         builder: (context, state) {
@@ -159,7 +157,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     buildLanguageList(size),
-
                   ],
                 ),
               ),
@@ -190,45 +187,41 @@ class _HomeScreenState extends State<HomeScreen> {
               return _buildLoading();
             } else if (state is LanguageLoaded) {
               List<Language>? languages = state.apiResponseModel.languages;
-              for(Language l in languages!)
-                {
-                  print(utf8.encode(l.data));
-                  var temp =utf8.encode(l.data);
-                  print(utf8.decode(temp));
-                }
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  for (int i = 0; i < languages.length; i++)
-                    Column(mainAxisAlignment: MainAxisAlignment.center,
+                  for (int i = 0; i < languages!.length; i++)
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: const Color(0xff647EFF),
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
+                        SizedBox(
+                         
                           height: size.height * .06,
                           width: size.width * .3,
-                          child: Text(
-                            languages[i].data.toString()
-                              , style: const TextStyle(color: Color(
-                              0xff647EFF),fontWeight: FontWeight.bold
-                              ),
-                            textAlign: TextAlign.center,
+                          child: MaterialButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: const Color(0xff647EFF))
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              languages[i].data.toString(),
+                              style: const TextStyle(
+                                  color: Color(0xff647EFF),
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(top:size.height*.03),
-                          child: SizedBox(   height: size.height * .03,
-
-            child:  Image(
-            image: NetworkImage(
-            languages[i].flag.toString())),
-            ),
+                          padding: EdgeInsets.only(top: size.height * .03),
+                          child: SizedBox(
+                            height: size.height * .03,
+                            child: Image(
+                                image:
+                                    NetworkImage(languages[i].flag.toString())),
+                          ),
                         ),
                       ],
                     ),

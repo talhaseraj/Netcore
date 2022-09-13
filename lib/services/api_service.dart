@@ -10,8 +10,7 @@ class ApiService{
    Future fetchLanguages() async {
      try {
        var response =  await http.get(Uri.parse(apiUrl));
-       print(response.body);
-       var temp=utf8.decode(response.bodyBytes);c
+       var temp=utf8.decode(response.bodyBytes);
        return apiResponseFromJson(temp);
      } catch (error, stacktrace) {
        print("Exception occured: $error stackTrace: $stacktrace");
